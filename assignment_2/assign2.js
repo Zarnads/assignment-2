@@ -24,12 +24,13 @@ fs.appendFile('demo.txt','this is updated line', function(err){
 var changed = fs.renameSync('demo.txt','final-demo.txt');
 console.log(changed) ;
 
+// delete the old demo.txt file
+var remove = fs.unlink('demo.txt');
+console.log(remove);
+
 
    
-   
-
-
-
+  
 
 server.listen(8002);
 console.log('it worked');
