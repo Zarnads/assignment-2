@@ -1,31 +1,28 @@
 const express = require("express");
+var bodyParser = require("body-parser");
 const app = express();
 require("./src/db/conn")
 const Blog = require("./src/models/blog");
 const path = require("path");
 
+const router = require("./router/routes");
+app.use('/',router);
+
+
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 app.use(express.json());
 
 app.set("view engine","ejs");
 
-app.get("/",(req,res)=>{
-    res.render("index");
-})
-app.get("/new",(req,res)=>{
-    res.render('new')
-})
-app.post('/add',(req,res)=>{
-    console.log(req.body);
-    const blog = new Blog(req.body)
-
-    blog.save().then(()=>{
-        res.status(201);
-        res.send(blog);
-    }).catch((e)=>{
-        res.status(400);
-        res.send(e);
-    })
-    
+app.post('/add',async(req,res)=>{
+    console.log(req.body)
+    try{
+        const blog = new Blog(req.body)
+        const createblog = await blog.save();
+        res.status(201).send(createblog);
+    }catch(e){res.status(400).send(e);}
 })
 
-app.listen(2000);
+app.listen(8000,()=>{
+    console.log('http://localhost:8000');
+});
