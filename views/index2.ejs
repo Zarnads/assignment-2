@@ -4,88 +4,27 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body {
-            background-image: url('https://upload.wikimedia.org/wikipedia/en/b/bb/Graduated_Blue_Background.png');
-            background-repeat: no-repeat;
-        }
-
- 
+        body {background-image: url('https://upload.wikimedia.org/wikipedia/commons/f/fb/Light_blue.png');}
+        a {font-size: 35px}
     </style>
+    
 </head>
 
 <body>
     <%-include('_header')%>
         <h1 class="mb-4">Blog World</h1>
         <a href="/new" class="btn btn-success">New Article</a>
+        <!-- <a href="/allblogs" class="btn btn-success">ALL BLOG</a> -->
+        <br><br>
+        <% data.forEach(entry=>{%>
+            <a href="/all/<%-entry.id%>"><%=entry.title%></a>
+            <p><%=entry.content%></p>
+            <p><%=entry.createdAt%></p><%})
+            %>
+            
+    
+       
         
-
-        <!-- Main Content-->
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-left">
-                <div class="col-md-10 col-lg-8 col-xl-7">
-                    <!-- Post preview-->
-                    <br><br>
-                    <div class="post-preview">
-                        <a href="/post">
-                            <h2 class="post-title">learn html</h2>
-                            <h3 class="post-subtitle">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                                Inventore, ducimus!</h3>
-
-                        </a>
-                        <p class="post-meta">
-
-                            on September 24, 2021
-                        </p>
-                    </div>
-                    <!-- Divider-->
-                    <hr class="my-4" />
-                    <!-- Post preview-->
-                    <div class="post-preview">
-                        <a href="/post">
-                            <h2 class="post-title">I believe every human has a finite number of heartbeats. I don't
-                                intend to waste any of mine.</h2>
-                        </a>
-                        <p class="post-meta">
-
-                            on September 18, 2021
-                        </p>
-                    </div>
-                    <!-- Divider-->
-                    <hr class="my-4" />
-                    <!-- Post preview-->
-                    <div class="post-preview">
-                        <a href="/post">
-                            <h2 class="post-title">Science has not yet mastered prophecy</h2>
-                            <h3 class="post-subtitle">We predict too much for the next year and yet far too little for
-                                the next ten.</h3>
-                        </a>
-                        <p class="post-meta">
-
-                            on August 24, 2021
-                        </p>
-                    </div>
-                    <!-- Divider-->
-                    <hr class="my-4" />
-                    <!-- Post preview-->
-                    <div class="post-preview">
-                        <a href="/post">
-                            <h2 class="post-title">Failure is not an option</h2>
-                            <h3 class="post-subtitle">Many say exploration is part of our destiny, but it’s actually our
-                                duty to future generations.</h3>
-                        </a>
-                        <p class="post-meta">
-
-                            on July 8, 2021
-                        </p>
-                    </div>
-                    <!-- Divider-->
-                    <hr class="my-4" />
-                    <!-- Pager-->
-                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase"
-                            href="#!">Older Posts →</a></div>
-                </div>
-            </div>
-        </div>
         <%-include('_footer')%>
             <!-- Bootstrap core JS-->
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
